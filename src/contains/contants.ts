@@ -52,9 +52,9 @@ export const FILTERS_OPTIONS: {
 export const GET_POSTS_FIRST_COMMON_FOR_DASHBOARD = 30
 export const GET_POSTS_FIRST_COMMON = 16
 export const GET_USERS_FIRST_COMMON = 10
-export const GET_CATEGORIES_FIRST_COMMON = 15
+export const GET_CATEGORIES_FIRST_COMMON = 120
 
 //
-export const REVALIDATE_TIME = 60
+export const REVALIDATE_TIME = 900
 
 export { avatarColors }
