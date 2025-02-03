@@ -94,7 +94,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 					<PlusCircleIcon className="h-6 w-6" />
 				</div>
 				<div className="ms-4">
-					<p className="text-sm font-medium">{T['Criar']}</p>
+					<p className="text-sm font-medium">{T['Create']}</p>
 				</div>
 			</Link>
 		)
