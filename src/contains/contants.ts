@@ -49,7 +49,7 @@ export const FILTERS_OPTIONS: {
 	{ name: T['Comments/asc'], value: 'COMMENT_COUNT/ASC' },
 ]
 
-export const GET_POSTS_FIRST_COMMON_FOR_DASHBOARD = 30
+export const GET_POSTS_FIRST_COMMON_FOR_DASHBOARD = 60
 export const GET_POSTS_FIRST_COMMON = 16
 export const GET_USERS_FIRST_COMMON = 10
 export const GET_CATEGORIES_FIRST_COMMON = 120
