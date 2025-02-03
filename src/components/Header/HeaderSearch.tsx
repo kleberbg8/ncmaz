@@ -12,7 +12,7 @@ export const HeaderSearchForm = () => {
 				<button className="absolute inset-0"></button>
 				<Input
 					type="text"
-					placeholder={T['Type to search...']}
+					placeholder={T['Digite para pesquisar...']}
 					className="!w-40 pr-5 group-hover:border-neutral-300 md:!w-full md:pr-10 dark:placeholder:text-neutral-400 dark:group-hover:border-neutral-400"
 					sizeClass="h-[42px] pl-4 py-3"
 					rounded="rounded-full"
@@ -42,7 +42,7 @@ export const HeaderSearchForm2 = () => {
 			>
 				<Input
 					type="search"
-					placeholder={T['Type to search...']}
+					placeholder={T['Digite para pesquisar...']}
 					className="!w-40 pr-5 group-hover:border-neutral-300 md:!w-full md:pr-10 dark:placeholder:text-neutral-400 dark:group-hover:border-neutral-400"
 					sizeClass="h-[42px] pl-4 py-3"
 					name="search"

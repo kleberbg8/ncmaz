@@ -4,46 +4,46 @@
 	"mailpoet_list_id": "3",
 	"subcription_widget": {
 		"enable": true,
-		"title": "Stay up to date",
-		"description": "Get notified when I publish something new, and unsubscribe at any time.",
-		"placeholder": "Enter your email address",
-		"success_message": "Thank you for subscribing. You're in!",
-		"error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
+		"title": "Mantenha-se atualizado",
+		"description": "Seja notificado quando eu publicar algo novo e cancele a inscrição a qualquer momento.",
+		"placeholder": "Digite seu endereço de e-mail",
+		"success_message": "Obrigado por se inscrever. Você está dentro!",
+		"error_message": "Algo deu errado. Por favor, tente novamente. Se o problema persistir, você pode entrar em contato comigo."
 	},
 	"newsletter_section": {
 		"enable": true,
-		"title": "Join our newsletter 🎉",
-		"description": "Read and share new perspectives on just about any topic. Everyone’s welcome.",
+		"title": "Junte-se ao nosso boletim informativo 🎉",
+		"description": "Leia e compartilhe as principais notícias do Brasil e do mundo, 100% gratuito, diariamente na sua caixa de entrada",
 		"right_image": "/images/SVG-subcribe2.png",
-		"features_list": ["Create a free account.", "Write your stories."]
+		"features_list": ["Crie uma conta gratuita.", "Escreva suas histórias."]
 	},
 	"top_banner": {
 		"enable": true,
-		"description": "-50% Intro price for the next 72 hours only!.",
+		"description": "Fique sempre preparado! 🌤️ Receba a previsão do tempo atualizada no seu WhatsApp e planeje seu dia com precisão. Entre agora no nosso canal!.",
 		"end_link": {
-			"url": "https://themeforest.net/item/ncmaz-nextjs-headless-wordpress-blog-magazine/47815656",
-			"text": "Buy now  →",
+			"url": "https://whatsapp.com/channel/0029VaebiYo4tRrqoxR9Xt0b",
+			"text": "Acessar canal  →",
 			"new_tab": true
 		}
 	},
 	"top_category_section": {
 		"enable": true,
-		"title": "Discover top 10 categories",
-		"sub_title": "Let's explore the most popular categories"
+		"title": "Descubra as 10 principais categorias",
+		"sub_title": "Vamos explorar as categorias mais populares"
 	},
 	"site_info": {
-		"site_title": "Ncmaz Nextjs Blog",
-		"site_description": "Ncmaz Nextjs Blog headless WordPress",
-		"site_keywords": "Ncmaz Nextjs Blog",
-		"site_author": "ChisNghiax",
-		"site_email": "Your Email",
-		"site_phone": "Your Phone",
+		"site_title": "Jornal do Estado",
+		"site_description": "Conectando você com a verdade!",
+		"site_keywords": "Jornal do Estado",
+		"site_author": "Débora Rodrigues",
+		"site_email": "contato@jornaldoestado.com.br",
+		"site_phone": "64974002338",
 		"site_address": "Your Address",
-		"site_city": "Your City",
+		"site_city": "Cuiabá",
 		"site_state": "Your State",
 		"site_zip": "Your Zip",
-		"site_country": "Your Country",
-		"site_url": "https://www.yoursite.com",
+		"site_country": "Brasil",
+		"site_url": "https://www.jornaldoestado.com.br",
 		"site_logo": "/logo.png",
 		"site_logo_light": "/logo-light.png",
 		"site_favicon": "/favicon.png"
