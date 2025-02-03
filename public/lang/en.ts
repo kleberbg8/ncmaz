@@ -188,7 +188,7 @@ export default {
 	'GraphQL error': 'GraphQL error',
 	'Loading ...': 'Loading ...',
 	Refetch: 'Refetch',
-	'Comment this post': 'Comment this post',
+	'Comment this post': 'Comente esta notícia,
 	'Edit post': 'Edit post',
 	'Publish post': 'Publish post',
 	'Move to Pending': 'Move to Pending',
