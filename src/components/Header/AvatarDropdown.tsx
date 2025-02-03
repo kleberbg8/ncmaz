@@ -80,7 +80,23 @@ export default function AvatarDropdown({ className = '' }: Props) {
 
 	const renderCreatePost = () => {
 		return (
-
+			<Link
+				href={'/submission'}
+				className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
+				onClick={(e) => {
+					if (isAuthenticated === false) {
+						e.preventDefault()
+						openLoginModal('/submission')
+					}
+				}}
+			>
+				<div className="flex flex-shrink-0 items-center justify-center text-neutral-500 dark:text-neutral-300">
+					<PlusCircleIcon className="h-6 w-6" />
+				</div>
+				<div className="ms-4">
+					<p className="text-sm font-medium">{T['Criar']}</p>
+				</div>
+			</Link>
 		)
 	}
 
