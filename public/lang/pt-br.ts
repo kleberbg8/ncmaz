@@ -233,7 +233,7 @@ export default {
 	  'Allow comments': 'Permitir comentários',
 	  'Unset link': 'Desmarcar link',
 	  'Type the URL of the iframe you want to embed': 'Digite a URL do iframe que deseja incorporar',
-	  Iframe URL: 'URL do iframe',
+	  'Iframe URL': 'Iframe URL',
 	  'Draft this post': 'Rascunhar este post',
 	  'Post will be changed to draft. You can publish it later.': 'O post será alterado para rascunho. Você pode publicá-lo depois.',
 	},
