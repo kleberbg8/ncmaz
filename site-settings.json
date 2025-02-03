@@ -275,6 +275,6 @@
 		"timeFormat": "h:mm a",
 		"language": "ptBR",
 		"timezone": "auto",
-		"dateFormat": "j 'de' F 'de' Y"
+		"dateFormat": "j M, Y"
 	}
 }
