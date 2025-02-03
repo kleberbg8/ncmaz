@@ -235,6 +235,8 @@ export default {
 	  'Type the URL of the iframe you want to embed': 'Digite a URL do iframe que deseja incorporar',
 	  'Iframe URL': 'Iframe URL',
 	  'Draft this post': 'Rascunhar este post',
+	  'Create a free account': 'Crie sua conta grátis agora!',
+	  'Write your story': 'Sua história merece ser contada – Escreva-a!',
 	  'Post will be changed to draft. You can publish it later.': 'O post será alterado para rascunho. Você pode publicá-lo depois.',
 	},
 	pageSearch: {
