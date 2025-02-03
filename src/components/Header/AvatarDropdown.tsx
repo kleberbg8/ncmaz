@@ -78,6 +78,12 @@ export default function AvatarDropdown({ className = '' }: Props) {
 		)
 	}
 
+	const renderCreatePost = () => {
+		return (
+
+		)
+	}
+
 	const renderMenuEditProfile = () => {
 		return (
 			<Link
