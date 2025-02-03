@@ -273,8 +273,8 @@
 	},
 	"general_settings": {
 		"timeFormat": "h:mm a",
-		"language": "en",
+		"language": "ptBR",
 		"timezone": "auto",
-		"dateFormat": "M j, Y"
+		"dateFormat": "j 'de' F 'de' Y"
 	}
 }
