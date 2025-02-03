@@ -221,6 +221,7 @@ export default {
 	  'Upload a file': 'Carregar um arquivo',
 	  Re: 'Carregar um arquivo',
 	  'Paste or type URL': 'Cole ou digite a URL',
+	  'Discover the most outstanding articles on all topics of life. Write your stories and share them with the community. ': 'Descubra as notícias mais relevantes sobre todos os assuntos. Acompanhe os fatos e compartilhe informações com a comunidade! ',
 	  'Sorry this feature is not available yet. Please use the URL option.': 'Desculpe, esta funcionalidade ainda não está disponível. Por favor, use a opção URL.',
 	  'Post options': 'Opções do post',
 	  'Post format': 'Formato do post',
