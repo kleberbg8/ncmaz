@@ -1,6 +1,6 @@
 {
 	"version": "2.8.0",
-	"mailpoet_api_key": "your_mailpoet_api_key",
+	"mailpoet_api_key": "078b8019bc4a38f548d1472101cbe4d8",
 	"mailpoet_list_id": "3",
 	"subcription_widget": {
 		"enable": true,
@@ -51,25 +51,25 @@
 	"site_socials": [
 		{
 			"name": "facebook",
-			"url": "https://www.facebook.com/yourfacebookpage",
+			"url": "https://www.facebook.com/jornaldoestado",
 			"icon": "/images/socials/facebook.svg",
 			"description": "Follow us on Facebook"
 		},
 		{
 			"name": "twitter",
-			"url": "https://twitter.com/yourtwitterpage",
+			"url": "https://twitter.com/jornaldoestado",
 			"icon": "/images/socials/x-twitter.svg",
 			"description": "Follow us on Twitter"
 		},
 		{
 			"name": "github",
-			"url": "https://www.github.com/yourmediumpage",
+			"url": "https://www.github.com/jornaldoestado",
 			"icon": "/images/socials/github.svg",
 			"description": "Follow us on Github"
 		},
 		{
 			"name": "tiktok",
-			"url": "https://www.tiktok.com/yourtiktokpage",
+			"url": "https://www.tiktok.com/jornaldoestado",
 			"icon": "/images/socials/tiktok.svg",
 			"description": "Follow us on Tiktok"
 		}
