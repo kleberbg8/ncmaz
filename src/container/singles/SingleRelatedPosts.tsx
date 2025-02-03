@@ -25,7 +25,7 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
             className="mb-10 text-neutral-900 dark:text-neutral-50"
             desc=""
           >
-            Related posts
+            Notícias relacionadas
           </Heading>
 
           <SectionSliderPosts postCardName="card7" posts={posts || []} />
