@@ -98,7 +98,7 @@ const Archive: FaustTemplate<PageArchiveGetArchiveQuery> = (props) => {
 									<div className="flex cursor-pointer items-center space-x-2 text-sm font-medium text-neutral-500 rtl:space-x-reverse dark:text-neutral-400">
 										<FireIcon className="h-5 w-5" />
 										<span className="text-neutral-700 dark:text-neutral-300">
-											{count || 0} Articles
+											{count || 0} Notícias
 										</span>
 									</div>
 									<span className="block text-sm text-neutral-500 sm:text-base dark:text-neutral-400">

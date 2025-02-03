@@ -39,13 +39,13 @@ export default function CookiestBoxPopover() {
 					<div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
 						<div className="grid bg-white px-4 py-5 text-xs sm:px-5 sm:py-7 dark:bg-black">
 							<span>
-								This website uses cookies to ensure you receive the best
-								possible experience.{' '}
+							    Este site utiliza cookies para garantir a melhor
+								experiência possível para você.{' '}
 								<Link
 									className="font-medium text-neutral-900 underline underline-offset-2"
-									href={NC_SITE_SETTINGS.cookies_policy_page?.uri || '#'}
+									href={NC_SITE_SETTINGS.cookies_policy_page?.uri || 'https://www.jornaldoestado.com.br/cookies'}
 								>
-									Learn More
+									Leia Mais
 								</Link>
 							</span>
 
@@ -55,7 +55,7 @@ export default function CookiestBoxPopover() {
 								fontSize="text-xs font-medium"
 								onClick={handleAccept}
 							>
-								<span>Accept</span>
+								<span>Aceitar</span>
 							</ButtonPrimary>
 						</div>
 					</div>

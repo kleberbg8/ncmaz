@@ -15,6 +15,7 @@ export default {
 	read: 'ler',
 	'min read': 'min de leitura',
 	'Read more': 'Leia mais',
+	'More': 'Mais',
 	Reply: 'Responder',
 	'Delete comment': 'Excluir comentário',
 	'Are you sure you want to delete this comment? You cannot undo this action.': 'Tem certeza de que deseja excluir este comentário? Esta ação não pode ser desfeita.',
