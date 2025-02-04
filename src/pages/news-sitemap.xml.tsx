@@ -1,11 +1,16 @@
 import { GetServerSideProps } from 'next';
-import { getLatestNews } from '../utils/newsFetcher'; // Importação do fetcher
+import { getLatestNews } from '../utils/newsFetcher'; // Importa a função fetcher
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_URL as string;
 
   try {
     const articles = await getLatestNews();
+    console.log('Artigos retornados para o sitemap:', articles); // Para depuração
+
+    if (articles.length === 0) {
+      console.warn('Nenhum artigo encontrado nos últimos 48h.');
+    }
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -32,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     res.write(sitemap);
     res.end();
   } catch (error) {
-    console.error('Erro ao gerar o sitemap do Google News:', error);
+    console.error('Erro ao gerar o sitemap do Google News:', error.message, error.stack);
     res.statusCode = 500;
     res.end('Erro ao gerar o sitemap do Google News.');
   }
