@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const SITE_URL = process.env.NEXT_PUBLIC_URL // Update with your site URL if needed
+const SITE_URL = process.env.NEXT_PUBLIC_URL // Certifique-se de definir isso no .env
 
 module.exports = {
 	siteUrl: SITE_URL,
@@ -23,42 +23,44 @@ module.exports = {
 		'/dashboard',
 		'/dashboard/edit-profile',
 		'/dashboard/posts',
-		'/wordpress-sitemap.xml', // Keep this to exclude the WordPress sitemap itself
+		'/wordpress-sitemap.xml', // Exclui o sitemap gerado pelo WordPress
 	],
 	robotsTxtOptions: {
 		additionalSitemaps: [`${SITE_URL}/wordpress-sitemap.xml`],
 	},
 	transform: async (config, path) => {
-		// Get the current date and time in the format m/d/Y g:i a
-		const currentDate = new Date()
-		const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()} ${currentDate.getHours() % 12 || 12}:${currentDate.getMinutes().toString().padStart(2, '0')} ${currentDate.getHours() >= 12 ? 'PM' : 'AM'}`
+		// Gerar data no formato correto ISO 8601
+		const currentDate = new Date().toISOString()
 
-		// Define paths to assign low priority
-		const lowPriorityPaths = ['/contact', '/login', '/sign-up'] // Check paths without the trailing slashes
-		const isLowPriority = lowPriorityPaths.includes(path.replace(/\/$/, '')) // Remove trailing slash before checking
+		// Definir caminhos de baixa prioridade
+		const lowPriorityPaths = ['/contact', '/login', '/sign-up']
+		const isLowPriority = lowPriorityPaths.includes(path.replace(/\/$/, '')) // Remove barra final antes de verificar
 		const isHomePage = path === '/'
 
-		// Set the change frequency based on the page type
-		let changefreq = 'daily' // Default to daily
+		// Ajustar frequência de atualização
+		let changefreq = 'daily' // Padrão: diário
 		if (isHomePage) {
-			changefreq = 'always' // Home page changes always
+			changefreq = 'always' // Home atualiza sempre
 		} else if (isLowPriority) {
-			changefreq = 'monthly' // Low-priority pages change less often
+			changefreq = 'monthly' // Baixa prioridade = atualização mensal
 		}
 
-		const priority = isLowPriority ? 0.1 : 1.0 // Low priority for specific pages
+		// Ajustar prioridades corretamente
+		let priority = 1.0 // Prioridade padrão
+		if (path === '/contact') priority = 0.3 // Contato pode ser mais relevante
+		if (isLowPriority) priority = 0.1 // Login e Sign-up não são muito importantes
 
-		console.log('Transforming:', path, {
+		console.log('Transformando:', path, {
 			priority,
 			changefreq,
-			lastmod: formattedDate,
+			lastmod: currentDate,
 		})
 
 		return {
-			loc: `${SITE_URL}${path}`, // Ensure loc URL is correct
-			lastmod: formattedDate, // Formatted date as m/d/Y g:i a
-			priority: priority, // Set priority
-			changefreq: changefreq, // Set change frequency
+			loc: `${SITE_URL}${path}`,
+			lastmod: currentDate, // Agora no formato ISO 8601
+			priority: priority,
+			changefreq: changefreq,
 		}
 	},
 }
