@@ -101,6 +101,20 @@ module.exports = withFaust({
           ],
         }),
       },
+      // 🚀 Adicionando headers específicos para XML do Sitemap
+      {
+        source: "/sitemap-news.xml",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/xml",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
+          },
+        ],
+      },
     ];
   },
   i18n: {

@@ -1,53 +1,63 @@
 import { GetServerSideProps } from "next";
 
-const GRAPHQL_API_URL = "https://app.ziao.com.br/graphql"; // URL do backend WordPress
-const SITE_URL = "https://www.jornaldoestado.com.br"; // URL do frontend
-const SITE_NAME = "Jornal do Estado"; // Nome do portal
+const GRAPHQL_API_URL = "https://app.ziao.com.br/graphql"; // Backend WordPress
+const SITE_URL = "https://www.jornaldoestado.com.br"; // Frontend
+const SITE_NAME = "Jornal do Estado"; // Nome do site
 const LANGUAGE = "pt"; // Idioma do site
 
 const fetchRecentArticles = async () => {
-  const twoDaysAgo = new Date();
-  twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-  const formattedDate = twoDaysAgo.toISOString(); // Exemplos: "2025-02-02T00:00:00Z"
+  try {
+    const twoDaysAgo = new Date();
+    twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+    const formattedDate = twoDaysAgo.toISOString(); // Exemplo: "2025-02-02T00:00:00Z"
 
-  const query = `
-    query {
-      posts(where: {dateQuery: {after: "${formattedDate}"}}) {
-        edges {
-          node {
-            id
-            title
-            date
-            slug
+    const query = `
+      query {
+        posts(where: {dateQuery: {after: "${formattedDate}"}}) {
+          edges {
+            node {
+              id
+              title
+              date
+              slug
+            }
           }
         }
       }
+    `;
+
+    const response = await fetch(GRAPHQL_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query }),
+    });
+
+    if (!response.ok) {
+      console.error("Erro ao buscar artigos:", response.statusText);
+      return [];
     }
-  `;
 
-  const response = await fetch(GRAPHQL_API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Erro ao buscar artigos: ${response.statusText}`);
+    const json = await response.json();
+    return json.data?.posts?.edges?.map((edge: any) => edge.node) || [];
+  } catch (error) {
+    console.error("Erro na API GraphQL:", error);
+    return [];
   }
-
-  const json = await response.json();
-  return json.data.posts.edges.map((edge: any) => edge.node);
 };
 
 const generateNewsSitemap = (posts: any[]) => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n`;
 
+  if (posts.length === 0) {
+    console.warn("⚠️ Nenhum artigo encontrado para o sitemap.");
+  }
+
   posts.forEach((post) => {
     xml += `  <url>\n`;
-    xml += `    <loc>${SITE_URL}/${post.slug}</loc>\n`; // URL correta agora!
+    xml += `    <loc>${SITE_URL}/${post.slug}</loc>\n`;
     xml += `    <news:news>\n`;
     xml += `      <news:publication>\n`;
     xml += `        <news:name>${SITE_NAME}</news:name>\n`;
@@ -63,7 +73,7 @@ const generateNewsSitemap = (posts: any[]) => {
   return xml;
 };
 
-// 🚀 Next.js getServerSideProps para gerar o XML dinamicamente
+// 🚀 getServerSideProps para evitar erro 500
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   try {
     const recentPosts = await fetchRecentArticles();
