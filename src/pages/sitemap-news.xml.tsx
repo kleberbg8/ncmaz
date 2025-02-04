@@ -1,19 +1,26 @@
 import { GetServerSideProps } from "next";
 
-const GRAPHQL_API_URL = "https://app.ziao.com.br/graphql"; // Backend WordPress
-const SITE_URL = "https://www.jornaldoestado.com.br"; // Frontend
-const SITE_NAME = "Jornal do Estado"; // Nome do site
+const GRAPHQL_API_URL = "https://app.ziao.com.br/graphql"; // URL do backend WordPress
+const SITE_URL = "https://www.jornaldoestado.com.br"; // URL do frontend
+const SITE_NAME = "Jornal do Estado"; // Nome do portal
 const LANGUAGE = "pt"; // Idioma do site
 
+// Função para buscar os artigos mais recentes
 const fetchRecentArticles = async () => {
   try {
     const twoDaysAgo = new Date();
     twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-    const formattedDate = twoDaysAgo.toISOString(); // Exemplo: "2025-02-02T00:00:00Z"
+
+    // Formatar a data no formato esperado pela API
+    const dateInput = {
+      year: twoDaysAgo.getUTCFullYear(),
+      month: twoDaysAgo.getUTCMonth() + 1, // Os meses são baseados em zero
+      day: twoDaysAgo.getUTCDate(),
+    };
 
     const query = `
       query {
-        posts(where: {dateQuery: {after: "${formattedDate}"}}) {
+        posts(where: {dateQuery: {after: {year: ${dateInput.year}, month: ${dateInput.month}, day: ${dateInput.day}}}}) {
           edges {
             node {
               id
@@ -40,19 +47,21 @@ const fetchRecentArticles = async () => {
     }
 
     const json = await response.json();
+    console.log("📄 Artigos retornados:", json.data.posts.edges); // LOG PARA DEPURAÇÃO
     return json.data?.posts?.edges?.map((edge: any) => edge.node) || [];
   } catch (error) {
-    console.error("Erro na API GraphQL:", error);
+    console.error("Erro ao conectar com a API GraphQL:", error);
     return [];
   }
 };
 
+// Função para gerar o XML do Google News
 const generateNewsSitemap = (posts: any[]) => {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n`;
 
   if (posts.length === 0) {
-    console.warn("⚠️ Nenhum artigo encontrado para o sitemap.");
+    console.warn("⚠️ Nenhum artigo encontrado para o sitemap."); // LOG DE AVISO
   }
 
   posts.forEach((post) => {
@@ -73,7 +82,7 @@ const generateNewsSitemap = (posts: any[]) => {
   return xml;
 };
 
-// 🚀 getServerSideProps para evitar erro 500
+// 🚀 Next.js getServerSideProps
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   try {
     const recentPosts = await fetchRecentArticles();
@@ -83,7 +92,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     res.write(sitemap);
     res.end();
   } catch (error) {
-    console.error("Erro ao gerar sitemap:", error);
+    console.error("Erro ao gerar o sitemap:", error);
     res.statusCode = 500;
     res.end();
   }
