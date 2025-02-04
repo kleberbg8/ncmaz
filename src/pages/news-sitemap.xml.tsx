@@ -36,14 +36,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     res.setHeader('Content-Type', 'application/xml');
     res.write(sitemap);
     res.end();
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      // Trata o erro como uma instância de Error
-      console.error('Erro ao gerar o sitemap do Google News:', err.message, err.stack);
-    } else {
-      // Trata o erro genérico
-      console.error('Erro ao gerar o sitemap do Google News:', err);
-    }
+  } catch {
+    console.error('Erro ao gerar o sitemap do Google News.'); // Log genérico
     res.statusCode = 500;
     res.end('Erro ao gerar o sitemap do Google News.');
   }
