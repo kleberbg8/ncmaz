@@ -8,7 +8,7 @@ const LANGUAGE = "pt"; // Idioma do site
 const fetchRecentArticles = async () => {
   const twoDaysAgo = new Date();
   twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-  const formattedDate = twoDaysAgo.toISOString(); // Exemplo: "2025-02-02T00:00:00Z"
+  const formattedDate = twoDaysAgo.toISOString(); // Exemplos: "2025-02-02T00:00:00Z"
 
   const query = `
     query {
