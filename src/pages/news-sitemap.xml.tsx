@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   } catch (error) {
     console.error('Erro ao gerar o sitemap do Google News:', error.message, error.stack);
     res.statusCode = 500;
-    res.end('Erro ao gerar o sitemap do Google News.');
+    res.end('Erro ao gerars o sitemap do Google News.');
   }
 
   return {
