@@ -91,19 +91,19 @@
 	"search_page": {
 		"recommended_searches": {
 			"enable": true,
-			"title": "Recommended searches",
+			"title": "pesquisas recomendadas",
 			"items": [
 				{
-					"title": "Programming",
-					"url": "/search/posts/programming"
+					"title": "agronegócio",
+					"url": "/search/posts/agronegocio"
 				},
 				{
-					"title": "Design",
-					"url": "/search/posts/design"
+					"title": "loterias",
+					"url": "/search/posts/loterias"
 				},
 				{
-					"title": "Technology",
-					"url": "/search/posts/technology"
+					"title": "tecnologia",
+					"url": "/search/posts/tecnologia"
 				}
 			]
 		},
@@ -204,24 +204,24 @@
 		"lost_password": {
 			"is_use_lostpassword_default_of_wp": false,
 			"message": "Lost password not implemented yet! Please contact admmin for support.",
-			"url_lostpassword_default_of_wp": "https://yourwebsite.com/wp-login.php?action=lostpassword"
+			"url_lostpassword_default_of_wp": "https://www.jornaldoestado.com.br/wp-login.php?action=lostpassword"
 		}
 	},
 	"mobile_nav_sidebar": {
-		"description": "Discover the most outstanding articles on all topics of life. Write your stories and share them with the community. "
+		"description": "Descubra as notícias mais relevantes sobre todos os assuntos. Acompanhe os fatos e compartilhe informações com a comunidade! "
 	},
 	"help_page": {
 		"uri": "/helps",
 		"title": "Helps",
-		"sub_title": "Read and share new perspectives on just about any topic. Everyone’s welcome."
+		"sub_title": "Leia e compartilhe as últimas notícias sobre diversos temas. Informação para todos, em tempo real!"
 	},
 	"contact_page": {
 		"enable": true,
-		"title": "Get in touch",
-		"sub_title": "We’d love to hear from you. Fill out the form below to get in touch with us.",
+		"title": "Entre em contato",
+		"sub_title": "Adoraríamos ouvir você! Preencha o formulário abaixo e entre em contato conosco.",
 		"form": {
-			"success_message": "🎉 Thank you for your message. We will get back to you soon.",
-			"error_message": "Something went wrong. Please try again. If the problem persists, you can contact me."
+			"success_message": "🎉 Obrigado pela sua mensagem! Em breve entraremos em contato com você.",
+			"error_message": "Algo deu errado. Por favor, tente novamente. Se o problema persistir, entre em contato conosco."
 		},
 		"my_contact_info": [
 			{
