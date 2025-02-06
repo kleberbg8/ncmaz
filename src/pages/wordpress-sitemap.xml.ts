@@ -41,17 +41,10 @@ async function getAllWPContent(after = null, acc: any[] = []) {
 	return acc
 }
 
-// Function to format the date to `m/d/Y g:i a`
+// ✅ Função corrigida para formatar a data corretamente para ISO 8601
 function formatDate(dateString: string): string {
 	const date = new Date(dateString)
-	const month = date.getMonth() + 1
-	const day = date.getDate()
-	const year = date.getFullYear()
-	const hours = date.getHours()
-	const minutes = date.getMinutes().toString().padStart(2, '0')
-	const period = hours >= 12 ? 'PM' : 'AM'
-
-	return `${month}/${day}/${year} ${hours % 12 || 12}:${minutes} ${period}`
+	return date.toISOString() // Converte para formato ISO 8601
 }
 
 // Sitemap component
@@ -71,10 +64,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 		// Prepend the BASE_URL to the `uri`
 		acc.push({
-			loc: `${BASE_URL}${node.uri}`, // Ensure full URL is used
-			lastmod: node.modifiedGmt ? formatDate(node.modifiedGmt) : undefined, // Format lastmod date
-			changefreq: 'daily', // Set the change frequency to daily
-			priority: 0.8, // Set the priority to 0.8
+			loc: `${BASE_URL}${node.uri}`, // Garante que a URL completa seja usada
+			lastmod: node.modifiedGmt ? formatDate(node.modifiedGmt) : undefined, // ✅ Agora gera ISO 8601
+			changefreq: 'daily', // Mantém frequência diária
+			priority: 0.8, // Mantém prioridade 0.8
 		})
 
 		return acc
