@@ -4,7 +4,7 @@ export default async function handler(req, res) {
 	}
   
 	try {
-	  // Revalidar a página inicial
+	  // Revalidar a página inicials
 	  await res.revalidate('/');
 	  return res.json({ revalidated: true });
 	} catch (err) {
