@@ -6,17 +6,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    console.log('Iniciando revalidação da página inicial...');
+    console.log('🔄 Iniciando revalidação...');
     
-    // Revalidar apenas a página principal e uma específica de posts
+    // Revalidar a página inicial e a página de posts
     await res.revalidate('/');
-    await res.revalidate('/posts');
+    await res.revalidate('/posts'); // Se houver uma página específica de posts
 
-    console.log('Revalidação concluída.');
+    console.log('✅ Revalidação concluída.');
     
     return res.json({ revalidated: true });
   } catch (err: any) {
-    console.error('Erro ao revalidar:', err);
+    console.error('❌ Erro ao revalidar:', err);
     return res.status(500).json({ message: 'Error revalidating', error: err.message });
   }
 }
