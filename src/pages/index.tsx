@@ -1,11 +1,13 @@
 import { getWordPressProps, WordPressTemplate } from '@faustwp/core';
 import { WordPressTemplateProps } from '../types';
-export const getStaticProps = async () => {
-	const data = await fetch('https://app.ziao.com.br/wp-json/wp/v2/posts'); // Exemplo de API
-  
-	return {
-	  props: { data },
-	  revalidate: 60, // Atualiza automaticamente a cada 60 segundos
-	};
-  };
-  
+import { GetStaticProps } from 'next';
+import { REVALIDATE_TIME } from '@/contains/contants'; // Importando a constante
+
+export default function Page(props: WordPressTemplateProps) {
+    return <WordPressTemplate {...props} />;
+}
+
+// Use a constante REVALIDATE_TIME
+export const getStaticProps: GetStaticProps = (ctx) => {
+    return getWordPressProps({ ctx, revalidate: REVALIDATE_TIME });
+};
