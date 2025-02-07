@@ -7,7 +7,11 @@ export default function Page(props: WordPressTemplateProps) {
     return <WordPressTemplate {...props} />;
 }
 
-// Use a constante REVALIDATE_TIME
-export const getStaticProps: GetStaticProps = (ctx) => {
-    return getWordPressProps({ ctx, revalidate: REVALIDATE_TIME });
+// Usando a constante para definir o tempo de revalidação
+export const getStaticProps: GetStaticProps = async (ctx) => {
+    console.log(`🔄 Revalidando a home a cada ${REVALIDATE_TIME} segundos...`);
+    return getWordPressProps({
+        ctx,
+        revalidate: REVALIDATE_TIME, // Agora o tempo de revalidação vem da constante
+    });
 };
