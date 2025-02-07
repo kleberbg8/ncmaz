@@ -7,13 +7,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     console.log('🔄 Iniciando revalidação...');
-    
-    // Revalidar a página inicial e a página de posts
+
+    // Revalidar apenas a página inicial
     await res.revalidate('/');
-    await res.revalidate('/posts'); // Se houver uma página específica de posts
 
     console.log('✅ Revalidação concluída.');
-    
     return res.json({ revalidated: true });
   } catch (err: any) {
     console.error('❌ Erro ao revalidar:', err);
