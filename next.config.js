@@ -13,11 +13,11 @@ module.exports = withFaust({
 
   // 🔹 Configuração para permitir imagens do WordPress
   images: {
+    domains: ['app.ziao.com.br'], // Permite imagens do WordPress
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'app.ziao.com.br', // 🔹 WordPress Headless CMS
-        port: '',
+        hostname: 'app.ziao.com.br',
         pathname: '/wp-content/uploads/**',
       },
       {
