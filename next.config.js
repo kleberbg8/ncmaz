@@ -5,15 +5,9 @@ const { createSecureHeaders } = require('next-secure-headers');
  * @type {import('next').NextConfig}
  **/
 module.exports = withFaust({
-  trailingSlash: true,
-  reactStrictMode: true,
-  experimental: {
-    typedRoutes: false,
-  },
-
-  // 🔹 Configuração para permitir imagens do WordPress
   images: {
-    domains: ['app.ziao.com.br'], // Permite imagens do WordPress
+    domains: ['app.ziao.com.br'], // Permite carregar imagens do WordPress
+    unoptimized: true, // 🚀 Desativa globalmente a otimização de imagens do Next.js
     remotePatterns: [
       {
         protocol: 'https',
@@ -22,7 +16,7 @@ module.exports = withFaust({
       },
       {
         protocol: 'https',
-        hostname: getWpHostname() || 'app.ziao.com.br', // 🔹 Garante que o domínio do WordPress está permitido
+        hostname: getWpHostname() || 'app.ziao.com.br', // Garante que o domínio do WordPress está permitido
         port: '',
         pathname: '/**',
       },
@@ -68,51 +62,22 @@ module.exports = withFaust({
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAME_1 || '1.gravatar.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAME_2 || '1.gravatar.com',
-        port: '',
-        pathname: '/**',
-      },
     ],
   },
+  // Configurações adicionais
+  trailingSlash: true,
+  reactStrictMode: true,
+  experimental: {
+    typedRoutes: false,
+  },
 
-  // 🔹 Headers de segurança para proteger a aplicação
+  // 🔐 Cabeçalhos de segurança
   async headers() {
     return [
       {
-        source: '/:path*',
-        headers: createSecureHeaders({
-          xssProtection: false,
-          frameGuard: ['allow-from', { uri: process.env.NEXT_PUBLIC_WORDPRESS_URL }],
-        }),
-      },
-      // 🔹 Configuração para garantir que o Sitemap XML seja servido corretamente
-      {
-        source: "/sitemap-news.xml",
-        headers: [
-          {
-            key: "Content-Type",
-            value: "application/xml",
-          },
-          {
-            key: "Cache-Control",
-            value: "public, max-age=0, must-revalidate",
-          },
-        ],
+        source: '/(.*)',
+        headers: createSecureHeaders(),
       },
     ];
-  },
-
-  // 🔹 Configuração de idiomas
-  i18n: {
-    locales: ['en', 'pt-br'], // Idiomas disponíveis
-    defaultLocale: 'pt-br',   // Idioma padrão
   },
 });
