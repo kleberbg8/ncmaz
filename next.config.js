@@ -10,23 +10,19 @@ module.exports = withFaust({
   experimental: {
     typedRoutes: false,
   },
+
+  // 🔹 Configuração para permitir imagens do WordPress
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
+        protocol: 'https',
+        hostname: 'app.ziao.com.br', // 🔹 WordPress Headless CMS
         port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: getWpHostname(),
-        port: '',
-        pathname: '/**',
+        pathname: '/wp-content/uploads/**',
       },
       {
         protocol: 'https',
-        hostname: getWpHostname(),
+        hostname: getWpHostname() || 'app.ziao.com.br', // 🔹 Garante que o domínio do WordPress está permitido
         port: '',
         pathname: '/**',
       },
@@ -72,36 +68,32 @@ module.exports = withFaust({
         port: '',
         pathname: '/**',
       },
-      // from env
       {
         protocol: 'https',
-        hostname:
-          process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAME_1 || '1.gravatar.com',
+        hostname: process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAME_1 || '1.gravatar.com',
         port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname:
-          process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAME_2 || '1.gravatar.com',
+        hostname: process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAME_2 || '1.gravatar.com',
         port: '',
         pathname: '/**',
       },
     ],
   },
+
+  // 🔹 Headers de segurança para proteger a aplicação
   async headers() {
     return [
       {
         source: '/:path*',
         headers: createSecureHeaders({
           xssProtection: false,
-          frameGuard: [
-            'allow-from',
-            { uri: process.env.NEXT_PUBLIC_WORDPRESS_URL },
-          ],
+          frameGuard: ['allow-from', { uri: process.env.NEXT_PUBLIC_WORDPRESS_URL }],
         }),
       },
-      // 🚀 Adicionando headers específicos para XML do Sitemap
+      // 🔹 Configuração para garantir que o Sitemap XML seja servido corretamente
       {
         source: "/sitemap-news.xml",
         headers: [
@@ -117,8 +109,10 @@ module.exports = withFaust({
       },
     ];
   },
+
+  // 🔹 Configuração de idiomas
   i18n: {
     locales: ['en', 'pt-br'], // Idiomas disponíveis
-    defaultLocale: 'pt-br',    // Idioma padrão
+    defaultLocale: 'pt-br',   // Idioma padrão
   },
 });
