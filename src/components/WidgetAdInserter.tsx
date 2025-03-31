@@ -9,7 +9,7 @@ const GET_AD = gql`
 const WidgetAdInserter = ({ block = 1 }) => {
   const { data, loading, error } = useQuery(GET_AD, { variables: { block } });
 
-  if (loading) return <p>Carregando anúncio...</p>;
+  if (loading) return <p>Carregandos anúncio...</p>;
   if (error) return <p>Erro ao carregar o anúncio.</p>;
 
   return (
